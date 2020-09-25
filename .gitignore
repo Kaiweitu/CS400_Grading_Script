@@ -1,0 +1,6 @@
+*.csv
+*.java
+*.class
+
+.*
+!/.gitignore

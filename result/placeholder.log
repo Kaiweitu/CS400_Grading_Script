@@ -1,0 +1,43 @@
+> Task :clean
+> Task :compileJava
+> Task :processResources NO-SOURCE
+> Task :classes
+> Task :jar
+> Task :assemble
+> Task :compileTestJava
+> Task :processTestResources
+> Task :testClasses
+
+BUILD SUCCESSFUL in 0s
+5 actionable tasks: 5 executed
+
+Thanks for using JUnit! Support its development at https://junit.org/sponsoring
+
+[36m╷[0m
+[36m├─[0m [36mJUnit Jupiter[0m [32m✔[0m
+[36m│  ├─[0m [36mTestSuite1[0m [32m✔[0m
+[36m│  │  ├─[0m [34mwordsOne()[0m [32m✔[0m
+[36m│  │  └─[0m [34mwordsTwo()[0m [32m✔[0m
+[36m│  └─[0m [36mTestSuite0[0m [32m✔[0m
+[36m│     ├─[0m [34msmallHeap()[0m [32m✔[0m
+[36m│     ├─[0m [34mconstructor()[0m [32m✔[0m
+[36m│     ├─[0m [34mremove()[0m [32m✔[0m
+[36m│     ├─[0m [34madd()[0m [32m✔[0m
+[36m│     ├─[0m [34mprioritize()[0m [32m✔[0m
+[36m│     └─[0m [34maddAndGetHeight()[0m [32m✔[0m
+[36m└─[0m [36mJUnit Vintage[0m [32m✔[0m
+
+Test run finished after 109 ms
+[         4 containers found      ]
+[         0 containers skipped    ]
+[         4 containers started    ]
+[         0 containers aborted    ]
+[         4 containers successful ]
+[         0 containers failed     ]
+[         8 tests found           ]
+[         0 tests skipped         ]
+[         8 tests started         ]
+[         0 tests aborted         ]
+[         8 tests successful      ]
+[         0 tests failed          ]
+
