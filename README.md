@@ -9,10 +9,8 @@ Folder structure:
 AVLTreeUnitTest
  |- scr
  |  |- main/java    # This is where the student code will be placed
- |  |- test
- |      |- java     # This is where the all the test files stay
- |          |- TestSuite1.java  # This is a template test code file
- |      |- resources    # This is where all the input files stay
+        | - UnitTestRunner.java # This is the main class which will launch the unit test
+        | - TestResultListener.java # This is a listener for the test purpose
 ```
 
 
@@ -45,7 +43,7 @@ runtest.sh
 
 ```text
 # A generated result csv with following columns:
-# Name, Email, Submission Timestamp, Passed, Failed, Total
+# Name, Email, Submission Timestamp, score, overall
 grade_result_2020-09-22_19-51-51.csv
 ```
 
@@ -56,12 +54,6 @@ git clone git@github.com:Kaiweitu/CS400_Grading_Script.git
 cd CS400_Grading_Script
 
 # Copy all the submission zip files into the submission directory
-
-# Copy all the testing files into the corresponding directory if applicable
-cp <tests>/* AVLTreeUnitTest/src/test/java/
-
-# Copy all the input files into the corresponding directory if applicable
-cp <inputs>/* AVLTreeUnitTest/src/test/resources/
 
 ./runtest.sh
 ```

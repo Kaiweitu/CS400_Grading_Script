@@ -1,6 +1,6 @@
 *.csv
 *.java
 *.class
-
+result/*
 .*
 !/.gitignore

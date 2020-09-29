@@ -20,7 +20,6 @@ class CompileError(Error):
         self._profile = profile
         self._message = message
 
-
 class StudentProfile:
     def __init__(self, name, email, timestamp, unzip_dir):
         self._name = name
@@ -29,6 +28,8 @@ class StudentProfile:
         self._sub_dir = join(unzip_dir, "{}_{}_{}".format(name, email, timestamp))
         self._passed = -1
         self._failed = -1
+        self._score = -1
+        self._overall = -1
 
 
     def get_subdir(self):
@@ -48,6 +49,12 @@ class StudentProfile:
     
     def get_failed(self):
         return self._failed
+
+    def get_score(self):
+        return self._score
+
+    def get_overall(self):
+        return self._overall
 
     def start_grade(self, grade_dir, result_dir):
         log_path = join(result_dir, "{}_{}_{}.log".format(self._name, self._email, self._timestamp))
@@ -71,21 +78,19 @@ class StudentProfile:
         
         print("\tStart running the Unit Test...")
         child = subprocess.Popen(
-                                    ["java", "-jar", "junit-platform-console-standalone-1.7.0-all.jar", "-cp", "build/classes/java/test/:build/classes/java/main/", "--scan-classpath"], \
+                                    # ["java", "-jar", "junit-platform-console-standalone-1.7.0-all.jar", "-cp", "build/classes/java/test/:build/classes/java/main/", "--scan-classpath"], \
+                                    ["./gradlew", "run"],
                                     cwd = grade_dir,
                                     stdout=subprocess.PIPE
                                 )
         output = child.communicate()[0]
         lines = output.splitlines()
-        failed = int(lines[-2].split()[1])
-        success = int(lines[-3].split()[1])
-        aborted = int(lines[-4].split()[1])
-        started = int(lines[-5].split()[1])
-
-        assert failed + success + aborted == started
-        # print(failed, success, aborted, started)
-        self._passed = success
-        self._failed = failed + aborted
+        score = int(lines[-3].split()[2])
+        overall = int(lines[-3].split()[4])
+        assert score <=overall 
+        assert score >= 0
+        self._score = score
+        self._overall = overall
 
         
         with open(log_path, "ab+") as log:
@@ -178,8 +183,9 @@ def main():
     for st in students:
         try:
             st.start_grade(join(temp_dir, test_dir), result_dir)
-        except CompileError:
+        except CompileError as e:
             compilation_failed_list.append(st)
+            print(e, "\n")
     # shutil.rmtree(temp_dir)
 
     print("\n===================================")
@@ -194,7 +200,7 @@ def main():
     for st in students:
         if st not in compilation_failed_list:
             with open("grade_result_{}.csv".format(timestamp), "a+") as f:
-                f.write("{},{},{},{},{},{}\n".format(st.get_name(), st.get_email(), st.get_timestamp(), st.get_passed(), st.get_failed(), st.get_passed() + st.get_failed()))
+                f.write("{},{},{},{},{}\n".format(st.get_name(), st.get_email(), st.get_timestamp(), st.get_score(), st.get_overall()))
 
 
 if __name__ == "__main__":
