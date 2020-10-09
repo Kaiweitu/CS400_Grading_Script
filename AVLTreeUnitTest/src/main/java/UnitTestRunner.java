@@ -63,7 +63,7 @@ class UnitTestRunner {
 
     @Test
     @DisplayName("5")
-    void insertRotateRightHidden() {
+    void deleteRotateRightHidden() {
         // CASE 1
         AVLTree<Integer, String> tree = new AVLTree<Integer, String>();
         try {
@@ -79,7 +79,7 @@ class UnitTestRunner {
 
             // Rotate right
             tree.delete(11);
-            assertEquals("75210", removeWhitespace(tree.preOrderTraversal()));
+            assertEquals("52107", removeWhitespace(tree.preOrderTraversal()));
 
         } catch (DuplicateKeyException e) {
             fail("failed: unexpected DuplicateKeyException\n");
@@ -92,7 +92,7 @@ class UnitTestRunner {
 
     @Test
     @DisplayName("10")
-    void insertRotateLeftRightHidden() {
+    void deleteRotateLeftRightHidden() {
         // CASE 1
         AVLTree<Integer, String> tree = new AVLTree<Integer, String>();
 
@@ -121,7 +121,7 @@ class UnitTestRunner {
 
     @Test
     @DisplayName("5")
-    void insertRotateLeftHidden() {
+    void deleteRotateLeftHidden() {
         // CASE 1
         AVLTree<Integer, String> tree = new AVLTree<Integer, String>();
 
@@ -136,7 +136,7 @@ class UnitTestRunner {
 
             // Rotate left
             tree.delete(5);
-            assertEquals("11101516", removeWhitespace(tree.preOrderTraversal()));
+            assertEquals("15101116", removeWhitespace(tree.preOrderTraversal()));
 
 
         } catch (DuplicateKeyException e) {
@@ -150,7 +150,7 @@ class UnitTestRunner {
 
     @Test
     @DisplayName("10")
-    void insertRotateRightLeftHidden() {
+    void deleteRotateRightLeftHidden() {
         // CASE 1
         AVLTree<Integer, String> tree = new AVLTree<Integer, String>();
 
