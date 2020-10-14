@@ -164,12 +164,16 @@ class UnitTestRunner {
             tree.insert("e", 1);
             tree.insert("d", 1);
 
+
+
+
             assertEquals(3, tree.getHeight());
             assertEquals(10, tree.getSize());
             assertEquals("hcaedljpmr", removeWhitespace(tree.preOrderTraversal().trim()));
 
             tree.insert("z", 1);
-
+            assertEquals(4, tree.getHeight());
+            assertEquals(11, tree.getSize());
             assertEquals("hcaedljpmrz", removeWhitespace(tree.preOrderTraversal().trim()));
 
         } catch (IllegalKeyException e){
