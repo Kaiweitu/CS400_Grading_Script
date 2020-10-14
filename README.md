@@ -36,9 +36,10 @@ result
 # Sample: python3 grade_script.py -i submission -o result -t AVLTreeUnitTest -g grade.csv
 grade_script.py
 
-# A script will run the following command:
-# python3 grade_script.py -i submission -o result -t AVLTreeUnitTest -g grade.csv
-runtest.sh
+# A script run as following
+# ./runtest.sh RBTreeUnitTest
+# python3 grade_script.py -i submission -o result -t RBTreeUnitTest -g grade.csv
+runtest.sh 
 ```
 
 ```text
